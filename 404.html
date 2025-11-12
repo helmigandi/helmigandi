@@ -18,12 +18,12 @@
       <h1 class="error-code">404</h1>
       <p class="error-message">Page not found.</p>
       <p class="error-message">
-        <a href="index.html" class="home-link">Go to homepage</a>
+        <a href="/" class="home-link">Go to homepage</a>
       </p>
       <p class="redirect-message">Redirecting in <span id="seconds">5</span> seconds...</p>
     </div>
 
-    <script src="js/navbar-home.js"></script>
+    <script src="/js/navbar-404.js"></script>
     <script>
       // Auto redirect to homepage after 5 seconds
       let seconds = 5;
@@ -35,7 +35,7 @@
 
         if (seconds <= 0) {
           clearInterval(countdown);
-          window.location.href = "/index.html";
+          window.location.href = "/";
         }
       }, 1000);
     </script>
