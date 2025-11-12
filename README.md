@@ -17,29 +17,29 @@ My new simple blog.
 
 2. Sign Up / Log In to Cloudflare
 
-    1. Go to: <https://dash.cloudflare.com/>
-    2. Sign up for a free account (or log in if you have one)
-    3. Verify your email
+    - Go to: <https://dash.cloudflare.com/>
+    - Sign up for a free account (or log in if you have one)
+    - Verify your email
 
 3. Go to Cloudflare Pages
 
-    1. From Cloudflare dashboard, click **"Workers & Pages"** in the left sidebar
-    2. Click **"Create application"**
-    3. Click **"Pages"** tab
-    4. Click **"Connect to Git"**
+    - From Cloudflare dashboard, click **"Workers & Pages"** in the left sidebar
+    - Click **"Create application"**
+    - Click **"Pages"** tab
+    - Click **"Connect to Git"**
 
 4. Connect Your GitHub Repository
 
-    1. Click **"Connect GitHub"**
-    2. Authorize Cloudflare to access your GitHub account
-    3. Select **"Only select repositories"**
-    4. Choose your blog repository
-    5. Click **"Install & Authorize"**
+    - Click **"Connect GitHub"**
+    - Authorize Cloudflare to access your GitHub account
+    - Select **"Only select repositories"**
+    - Choose your blog repository
+    - Click **"Install & Authorize"**
 
 5. Configure Your Build Settings
 
-    1. Select your blog repository from the list
-    2. Click **"Begin setup"**
+    - Select your blog repository from the list
+    - Click **"Begin setup"**
 
 6. Fill in the configuration
 
@@ -51,9 +51,9 @@ My new simple blog.
 
 7. Deploy
 
-    1. Click **"Save and Deploy"**
-    2. Wait for deployment (usually takes 1-2 minutes)
-    3. You'll see a success message with your live URL!
+    - Click **"Save and Deploy"**
+    - Wait for deployment (usually takes 1-2 minutes)
+    - You'll see a success message with your live URL!
 
 8. Your Blog is Live! 🎉
 
