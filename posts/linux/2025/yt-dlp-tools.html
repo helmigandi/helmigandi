@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yt-dlp Tools Powerful untuk Download Video - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- Prism.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="linux">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">yt-dlp Tools Powerful untuk Download Video</h1>
+      <p class="post-meta">4 November 2025, 14:30</p>
+
+      <div class="post-body">
+        <p>
+          yt-dlp adalah salah satu tool baris perintah (command-line) yang banyak digunakan untuk mengunduh video dan
+          audio dari YouTube, X atau Twitter, Instagram, Facebook, Tiktok, Reddit, serta ribuan situs lainnya.
+        </p>
+
+        <h2>I. Cara Install</h2>
+
+        <p>
+          Untuk melakukan proses instalasi dan mengunduh (download) yt-dlp, silakan kunjungi halaman GitHub resmi
+          <a
+            href="https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#installation"
+            target="_blank"
+            rel="noopener noreferrer"
+            >berikut</a
+          >
+          sesuai dengan sistem operasi yang Anda gunakan.
+        </p>
+
+        <h2>II. Perintah-perintah Penting</h2>
+
+        <p>Berikut adalah beberapa perintah dasar yang sering digunakan dalam yt-dlp:</p>
+
+        <ul>
+          <li><code class="language-bash">yt-dlp [URL]</code>: Mengunduh video dari URL yang diberikan.</li>
+          <li>
+            <code class="language-bash">yt-dlp -F [URL]</code>: Menampilkan format video dan audio yang tersedia untuk
+            diunduh.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp -f [format_code] [URL]</code>: Mengunduh video dengan format tertentu
+            berdasarkan kode format.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp -o [output_template] [URL]</code>: Menentukan template nama file output
+            untuk video yang diunduh.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp --extract-audio --audio-format mp3 [URL]</code>: Mengunduh dan
+            mengonversi video menjadi file audio MP3.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp --write-sub --sub-lang [language_code] [URL]</code>: Mengunduh video
+            subtitle dalam bahasa tertentu.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp --write-auto-sub [URL]</code>: Mengunduh video dengan default subtitle.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp --all-subs [URL]</code>: Mengunduh video dengan semua subtitle yang
+            tersedia.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp -o "%(playlist_index)s-%(title)s.%(ext)s" [URL Playlist]</code>:
+            Mengunduh semua video dalam playlist dengan nomor index.
+          </li>
+          <li>
+            <code class="language-bash"
+              >yt-dlp --write-auto-sub -o "%(playlist_index)s-%(title)s.%(ext)s" [URL Playlist]</code
+            >: Mengunduh semua video dalam playlist dengan nomor index dan subtitle-nya.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp -o "%(uploader)s_%(id)s.%(ext)s" [URL]</code>: Mengunduh video dengan
+            menggunakan custom nama penunggah dan video id.
+          </li>
+          <li>
+            <code class="language-bash">yt-dlp -o "%(timestamp)s_%(id)s.%(ext)s" [URL]</code>: Mengunduh video dengan
+            menggunakan custom nama waktu dan video id.
+          </li>
+        </ul>
+
+        <h2>III. Mengunduh Video Instagram</h2>
+        <p>Copy paste Instagram post URL:</p>
+        <pre><code class="language-bash">yt-dlp "https://www.instagram.com/p/POST_ID/"</code></pre>
+
+        <p>Atau Instagram reels:</p>
+        <pre><code class="language-bash">yt-dlp "https://www.instagram.com/reel/REEL_ID/"</code></pre>
+
+        <h2>IV. Mengunduh Video Twitter</h2>
+        <p>Copy paste Twitter post URL:</p>
+        <pre><code class="language-bash">yt-dlp "https://x.com/username/status/TWEET_ID"</code></pre>
+
+        <h2>V. Daftar Pustaka</h2>
+
+        <ul>
+          <li>
+            yt-dlp.
+            <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">yt-dlp Github</a>.
+            (Diakses tanggal 4 November 2025)
+          </li>
+          <li>
+            Mohamadi, Iman.2015.
+            <a
+              href="https://askubuntu.com/questions/694848/how-to-download-a-youtube-playlist-with-numbered-prefix-via-youtube-dl"
+              target="_blank"
+              rel="noopener noreferrer"
+              >How to download a youtube playlist with numbered prefix via youtube-dl?</a
+            >. (Diakses tanggal 4 November 2025)
+          </li>
+        </ul>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/linux.html">← Back to Linux Posts</a>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Prism.js -->
+    <script src="../../../js/prism-loader.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+nav a {
+    color: blue;
+    text-decoration: underline;
+    margin-right: 15px;
+}
+
+nav a.active {
+    color: black;
+    font-weight: bold;
+}
+
+hr {
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.post-item {
+    margin: 15px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.post-date {
+    color: #666;
+    min-width: 150px;
+}
+
+.post-item a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.pagination a {
+    color: blue;
+    text-decoration: underline;
+    padding: 5px 10px;
+}
+
+.pagination .current-page {
+    font-weight: bold;
+    color: black;
+    padding: 5px 10px;
+}

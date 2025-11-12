@@ -1,0 +1,35 @@
+# Ignore compiled CSS files if using a preprocessor like Sass/Less
+*.css.map
+*.min.css
+
+# Ignore compiled JavaScript files if using a bundler/transpiler
+*.js.map
+*.min.js
+
+# Ignore temporary or editor-specific files
+*.log
+*.tmp
+.DS_Store # macOS specific
+Thumbs.db # Windows specific
+.vscode/ # Visual Studio Code settings
+.idea/ # IntelliJ IDEA settings
+
+# Ignore build output directories
+/dist/
+/build/
+/out/
+
+# Ignore node_modules if using npm/yarn
+/node_modules/
+
+# Ignore sensitive information like API keys or configuration files
+.env
+config.js # or similar files containing credentials
+
+# Ignore generated documentation
+/docs/
+/.yardoc/
+
+# Ignore other common generated files
+*.zip
+*.tar.gz

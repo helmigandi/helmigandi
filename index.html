@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmigandi - Halaman depan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Helmigandi's Blog RSS Feed" href="rss.xml">
+</head>
+<body data-page="home">
+    <div id="navbar"></div>
+
+    <h2>Halaman depan</h2>
+    <p>Selamat datang di Blog Helmigandi!</p>
+
+    <div id="posts-list"></div>
+
+    <script src="js/navbar-home.js"></script>
+    <script src="js/posts/linux.js"></script>
+    <script src="js/posts/windows.js"></script>
+    <script src="js/posts/java.js"></script>
+    <script src="js/posts.js"></script>
+    <script>
+        displayPosts('all');
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Blog Helmigandi</title>
+    <link>http://yourdomain.com</link>
+    <description>A blog about Linux, Java, and Windows</description>
+    <language>id-ID</language>
+    <lastBuildDate>Tue, 4 Nov 2025 07:30:00 +0000</lastBuildDate>
+
+    <item>
+        <title>yt-dlp Tools Powerful untuk Download Video</title>
+        <link>http://yourdomain.com/posts/linux/2025/yt-dlp-tools.html</link>
+        <description>Tutorial penggunaan yt-dlp</description>
+        <pubDate>Tue, 4 Nov 2025 07:30:00 +0000</pubDate>
+        <category>Linux</category>
+        <guid>http://yourdomain.com/posts/linux/2025/yt-dlp-tools.html</guid>
+    </item>
+
+    <item>
+        <title>Learn Linux for Programmer</title>
+        <link>http://yourdomain.com/posts/linux/learn-linux-for-programmer.html</link>
+        <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Learn Linux basics for programmers.</description>
+        <pubDate>Sat, 21 Oct 2025 14:30:00 +0000</pubDate>
+        <category>Linux</category>
+        <guid>http://yourdomain.com/posts/linux/learn-linux-for-programmer.html</guid>
+    </item>
+
+    <item>
+        <title>Cara Install Ulang Windows</title>
+        <link>http://yourdomain.com/posts/windows/cara-install-ulang-windows.html</link>
+        <description>Panduan lengkap cara install ulang Windows dengan mudah.</description>
+        <pubDate>Fri, 09 Aug 2025 10:00:00 +0000</pubDate>
+        <category>Windows</category>
+        <guid>http://yourdomain.com/posts/windows/cara-install-ulang-windows.html</guid>
+    </item>
+
+    <item>
+        <title>Belajar Java OOP</title>
+        <link>http://yourdomain.com/posts/java/belajar-java-oop.html</link>
+        <description>Memahami konsep Object Oriented Programming dalam Java.</description>
+        <pubDate>Tue, 20 May 2025 08:00:00 +0000</pubDate>
+        <category>Java</category>
+        <guid>http://yourdomain.com/posts/java/belajar-java-oop.html</guid>
+    </item>
+
+</channel>
+</rss>
