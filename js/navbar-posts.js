@@ -2,10 +2,10 @@
 const navbarHTML = `
 <h1>Example's Blog</h1>
 <nav>
-    <a href="../../index.html" id="nav-home">Home</a>
-    <a href="../../pages/linux.html" id="nav-linux">Linux</a>
-    <a href="../../pages/java.html" id="nav-java">Java</a>
-    <a href="../../pages/windows.html" id="nav-windows">Windows</a>
+    <a href="../../../index.html" id="nav-home">Home</a>
+    <a href="../../../pages/linux.html" id="nav-linux">Linux</a>
+    <a href="../../../pages/java.html" id="nav-java">Java</a>
+    <a href="../../../pages/windows.html" id="nav-windows">Windows</a>
 </nav>
 <hr>
 `;
