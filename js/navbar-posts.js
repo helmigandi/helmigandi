@@ -1,6 +1,6 @@
 // Create navbar HTML for posts (in posts/category/ folders)
 const navbarHTML = `
-<h1>Example's Blog</h1>
+<h1>Helmigandi</h1>
 <nav>
     <a href="../../../index.html" id="nav-home">Home</a>
     <a href="../../../pages/linux.html" id="nav-linux">Linux</a>

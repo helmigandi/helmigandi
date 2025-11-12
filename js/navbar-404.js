@@ -1,6 +1,6 @@
 // Create navbar HTML for 404 page (uses absolute paths)
 const navbarHTML = `
-<h1>Example's Blog</h1>
+<h1>Helmigandi</h1>
 <nav>
     <a href="/" id="nav-home">Home</a>
     <a href="/pages/linux.html" id="nav-linux">Linux</a>
