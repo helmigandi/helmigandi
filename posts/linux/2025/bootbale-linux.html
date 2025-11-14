@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Bootable Flashdisk di Linux - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- Prism.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="linux">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">Cara Membuat Bootable Flashdisk di Linux</h1>
+      <p class="post-meta">14 November 2025, 07:45</p>
+
+      <div class="post-body">
+        <p>
+          Membuat bootable flashdisk atau flashdrive di Linux dapat dilakukan dengan menggunakan perintah
+          <code>dd</code>. Perlu diperhatikan bahwa penggunaan perintah ini akan menghapus semua data yang ada di
+          flashdisk, jadi pastikan untuk melakukan backup data penting sebelum melanjutkan.
+        </p>
+
+        <h2>I. Persiapan</h2>
+
+        <ol>
+          <li>Pastikan Anda memiliki file ISO dari sistem operasi yang ingin diinstal.</li>
+          <li>Colokkan flashdisk ke komputer Anda dan pastikan ukurannya cukup untuk menampung file ISO.</li>
+        </ol>
+
+        <h2>II. Identifikasi Perangkat</h2>
+
+        <p>Identifikasi perangkat flashdisk Anda menggunakan perintah berikut:</p>
+
+        <pre><code class="language-bash">lsblk</code></pre>
+
+        <p>
+          Contoh flashdisk yang terpasang di laptop saya yang terpasang di <code>sdd1</code> mount point, untuk setiap
+          sistem operasi biasanya berbeda. Pastikan Anda mengidentifikasi perangkat yang benar agar tidak terjadi
+          kesalahan:
+        </p>
+
+        <pre><code class="language-bash">NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT  
+sda    8:0   0 111,8G 0 disk  
+├─sda1 8:1   0 549M   0 part  
+├─sda2 8:2   0 56,3G  0 part  
+└─sda3 8:3   0 55G    0 part /  
+sdd    8:16  1 3,7G   0 disk  
+└─sdd1 8:17  1 3,7G   0 part /media/helmiz/HELMI
+sr0    11:0  1 1024M  0 rom</code></pre>
+
+        <h2>III. Melepaskan Perangkat dari Sistem Operasi</h2>
+        <p>
+          Sebelum membuat bootable flashdisk, pastikan flashdisk tidak sedang digunakan atau ter-mount. Gunakan perintah
+          berikut untuk melepaskan (unmount) flashdisk:
+        </p>
+
+        <pre><code class="language-bash">sudo umount /dev/sdd1</code></pre>
+
+        <h2>IV. Membuat Bootable Flashdisk</h2>
+        <p>Gunakan perintah <code>dd</code> untuk membuat bootable flashdisk:</p>
+
+        <pre><code class="language-bash">sudo dd if=/path/to/your.iso of=/dev/sdX bs=4M status=progress oflag=sync</code></pre>
+
+        <p>Keterangan:</p>
+        <ul>
+          <li><code>if=/path/to/your.iso</code>: Ganti dengan path lengkap ke file ISO yang ingin Anda gunakan.</li>
+          <li>
+            <code>of=/dev/sdX</code>: Ganti <code>sdX</code> dengan perangkat flashdisk yang telah Anda identifikasi
+            sebelumnya (tanpa angka partisi, misalnya <code>sdd</code>).
+          </li>
+          <li><code>bs=4M</code>: Menentukan ukuran blok sebesar 4 megabyte untuk proses penyalinan.</li>
+          <li><code>status=progress</code>: Menampilkan progres selama proses penyalinan berlangsung.</li>
+          <li><code>oflag=sync</code>: Memastikan bahwa data ditulis secara sinkron ke perangkat tujuan.</li>
+        </ul>
+
+        <p>
+          Proses ini mungkin memakan waktu beberapa menit. Tunggu hingga perintah selesai dan menampilkan ringkasan.
+        </p>
+
+        <p>Keluarkan dengan aman setelah selesai, dengan perintah:</p>
+
+        <pre><code class="language-bash">sync
+sudo eject /dev/sdX</code></pre>
+
+        <p>Sekarang flashdisk Anda sudah siap digunakan sebagai media instalasi bootable.</p>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/linux.html">← Back to Linux Posts</a>
+      </div>
+
+      <!-- Utterances Comments -->
+      <div class="comments-section">
+        <h3>Comments</h3>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="helmigandi/helmigandi"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Prism.js -->
+    <script src="../../../js/prism-loader.js"></script>
+  </body>
+</html>
