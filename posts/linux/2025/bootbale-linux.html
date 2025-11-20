@@ -68,7 +68,7 @@ sr0    11:0  1 1024M  0 rom</code></pre>
         <h2>IV. Membuat Bootable Flashdisk</h2>
         <p>Gunakan perintah <code>dd</code> untuk membuat bootable flashdisk:</p>
 
-        <pre><code class="language-bash">sudo dd if=/path/to/your.iso of=/dev/sdX bs=4M status=progress oflag=sync</code></pre>
+        <pre><code class="language-bash">sudo dd if=/path/to/your.iso of=/dev/sdX bs=4M status=progress && sync</code></pre>
 
         <p>Keterangan:</p>
         <ul>
@@ -79,7 +79,7 @@ sr0    11:0  1 1024M  0 rom</code></pre>
           </li>
           <li><code>bs=4M</code>: Menentukan ukuran blok sebesar 4 megabyte untuk proses penyalinan.</li>
           <li><code>status=progress</code>: Menampilkan progres selama proses penyalinan berlangsung.</li>
-          <li><code>oflag=sync</code>: Memastikan bahwa data ditulis secara sinkron ke perangkat tujuan.</li>
+          <li><code>&& sync</code>: Melakukan sinkron ke perangkat tujuan setelah data ditulis.</li>
         </ul>
 
         <p>
