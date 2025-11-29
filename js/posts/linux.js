@@ -1,5 +1,11 @@
 const linuxPosts = [
   {
+    date: "29 November 2025",
+    title: "Perbaikan Gagal Booting Arch Linux Setelah Update",
+    category: "linux",
+    url: "../posts/linux/2025/perbaikan-arch-linux-setelah-update.html",
+  },
+  {
     date: "14 November 2025",
     title: "Cara Membuat Bootable Flashdisk di Linux",
     category: "linux",
