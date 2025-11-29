@@ -2,7 +2,7 @@ function getAllPosts() {
   // Combine all posts from different categories
   return [
     ...(typeof linuxPosts !== "undefined" ? linuxPosts : []),
-    ...(typeof windowsPosts !== "undefined" ? windowsPosts : []),
+    ...(typeof postgresqlPosts !== "undefined" ? postgresqlPosts : []),
     ...(typeof javaPosts !== "undefined" ? javaPosts : []),
   ];
 }
@@ -42,8 +42,8 @@ function displayPosts(category = "all", page = 1) {
     filteredPosts = getAllPosts();
   } else if (category === "linux" && typeof linuxPosts !== "undefined") {
     filteredPosts = linuxPosts;
-  } else if (category === "windows" && typeof windowsPosts !== "undefined") {
-    filteredPosts = windowsPosts;
+  } else if (category === "postgresql" && typeof postgresqlPosts !== "undefined") {
+    filteredPosts = postgresqlPosts;
   } else if (category === "java" && typeof javaPosts !== "undefined") {
     filteredPosts = javaPosts;
   }
