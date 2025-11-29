@@ -17,11 +17,5 @@ const linuxPosts = [
     category: "linux",
     url: "../posts/linux/2025/yt-dlp-tools.html",
   },
-  {
-    date: "21 Oktober 2025",
-    title: "Learn Linux for Programmer",
-    category: "linux",
-    url: "../posts/linux/learn-linux-for-programmer.html",
-  },
   // Add more Linux posts here...
 ];
