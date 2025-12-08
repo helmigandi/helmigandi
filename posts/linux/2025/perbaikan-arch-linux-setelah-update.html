@@ -6,8 +6,8 @@
     <title>Perbaikan Gagal Booting Arch Linux Setelah Update - Helmigandi</title>
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="stylesheet" href="../../../css/post.css" />
-    <!-- Prism.js CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <!-- highlightjs CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
@@ -33,7 +33,7 @@
           <li>Setelah update dan reboot, sistem tidak bisa boot</li>
           <li>
             Muncul pesan error terkait
-            <code>../systemd/src/boot/boot.rc:2630@call_image_start:error parsing initrd: not found</code>
+            <code>../systemd/src/boot/boot.rc: 2630@call_image_start: error parsing initrd: not found</code>
           </li>
           <li>Terakhir, stuck pada screen "HP boot device not found".</li>
         </ol>
@@ -59,66 +59,74 @@
 
         <h3>2. Mount Partisi Root Sistem Arch Linux</h3>
 
-        <pre><code class="language-bash"># Periksa partisi
-lsblk
+        <pre><code class="language-bash">
+          # Periksa partisi
+          lsblk
 
-# Mount partisi root (biasanya yang besar, contoh: 475GB) atau bisa di /dev/sdaX
-mount /dev/nvme0n1p2 /mnt
+          # Mount partisi root (biasanya yang besar, contoh: 475GB) atau bisa di /dev/sdaX
+          mount /dev/nvme0n1p2 /mnt
 
-# Mount partisi EFI/boot (biasanya 1GB) atau biasanya di /dev/sda1
-mount /dev/nvme0n1p1 /mnt/boot
+          # Mount partisi EFI/boot (biasanya 1GB) atau biasanya di /dev/sda1
+          mount /dev/nvme0n1p1 /mnt/boot
 
-# Verifikasi file boot ada
-ls /mnt/boot
-# Harus muncul: EFI, loader, vmlinuz-linux, intel-ucode.img
-</code></pre>
+          # Verifikasi file boot ada
+          # Harus muncul: EFI, loader, vmlinuz-linux, intel-ucode.img
+          ls /mnt/boot
+        </code></pre>
 
         <h3>3. Masuk ke Sistem Menggunakan Chroot</h3>
         <pre><code class="language-bash">arch-chroot /mnt</code></pre>
 
         <h3>4. Perbaiki mkinitcpio.conf yang Rusak</h3>
-        <pre><code class="language-bash"># Hapus konfigurasi yang rusak
-rm /etc/mkinitcpio.conf
+        <pre><code class="language-bash">
+          # Hapus konfigurasi yang rusak
+          rm /etc/mkinitcpio.conf
 
-# Install ulang paket
-pacman -S mkinitcpio --overwrite /etc/mkinitcpio.conf
-</code></pre>
+          # Install ulang paket
+          pacman -S mkinitcpio --overwrite /etc/mkinitcpio.conf
+        </code></pre>
 
         <h3>5. Regenerate Initramfs</h3>
         <pre><code class="language-bash">mkinitcpio -P</code></pre>
         <p>Harus muncul pesan: Initcpio image generation successful</p>
 
         <h3>6. Install Ulang Bootloader</h3>
-        <pre><code class="language-bash"># Untuk systemd-boot (paling umum)
-bootctl install
+        <pre><code class="language-bash">
+          # Untuk systemd-boot (paling umum)
+          bootctl install
 
-# Peringatan "not booted with efi" boleh diabaikan</code></pre>
+          # Peringatan "not booted with efi" boleh diabaikan
+        </code></pre>
 
         <h3>7. Keluar dari Chroot dan Reboot</h3>
-        <pre><code class="language-bash"># Keluar dari chroot
-exit
+        <pre><code class="language-bash">
+          # Keluar dari chroot
+          exit
 
-# Unmount semua
-umount -R /mnt
+          # Unmount semua
+          umount -R /mnt
 
-# Reboot
-reboot</code></pre>
+          # Reboot
+          reboot
+        </code></pre>
         <p>Setelah reboot, sistem Arch Linux harusnya bisa booting normal kembali.</p>
 
         <h3>8. Sedikit Pencegahan</h3>
-<pre><code class="language-bash"># Sebelum update, cek ruang di /boot
-df -h /boot  # Pastikan ada ruang cukup
+        <pre><code class="language-bash">
+          # Sebelum update, cek ruang di /boot
+          df -h /boot  # Pastikan ada ruang cukup
 
-# Update
-yay -Syu
+          # Update
+          yay -Syu
 
-# Setelah update, sebelum reboot
-ls -lh /boot/initramfs*  # Verifikasi file ada
+          # Setelah update, sebelum reboot
+          ls -lh /boot/initramfs*  # Verifikasi file ada
 
-# Jika hilang
-sudo mkinitcpio -P
+          # Jika hilang
+          sudo mkinitcpio -P
 
-# Reboot</code></pre>
+          # Reboot
+        </code></pre>
 
         <h2>Kesimpulan</h2>
         <p>
@@ -146,7 +154,7 @@ sudo mkinitcpio -P
     </article>
 
     <script src="../../../js/navbar-posts.js"></script>
-    <!-- Load Prism.js -->
-    <script src="../../../js/prism-loader.js"></script>
+    <!-- Load Highlight.js -->
+    <script src="../../../js/highlight-loader.js"></script>
   </body>
 </html>
