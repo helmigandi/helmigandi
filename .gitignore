@@ -33,3 +33,5 @@ config.js # or similar files containing credentials
 # Ignore other common generated files
 *.zip
 *.tar.gz
+
+.vite/

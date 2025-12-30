@@ -65,18 +65,6 @@
   border-top: 1px solid #ddd;
 }
 
-.post-footer a {
-  color: #0066cc;
-  text-decoration: underline;
-}
-
-/* Comments Section */
-.comments-section {
-  margin-top: 40px;
-  padding-top: 30px;
-  border-top: 2px solid #ddd;
-}
-
 .comments-section h3 {
   font-size: 20px;
   margin-bottom: 20px;
@@ -193,12 +181,6 @@
   color: #666;
   font-style: italic;
   margin-top: 8px;
-}
-
-/* Links */
-.post-body a {
-  color: #0066cc;
-  text-decoration: underline;
 }
 
 /* Horizontal rule */
