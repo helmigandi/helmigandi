@@ -139,11 +139,11 @@ Edit `rss.xml` and add new item at the top:
 ```xml
 <item>
     <title>Your Post Title</title>
-    <link>https://your-domain.pages.dev/posts/category/2025/your-post-title.html</link>
+    <link>https://helmigandi.com/posts/category/2025/your-post-title.html</link>
     <description>Brief description of your post.</description>
     <pubDate>Day, DD Mon YYYY HH:MM:SS +0000</pubDate>
     <category>Category</category>
-    <guid>https://your-domain.pages.dev/posts/category/2025/your-post-title.html</guid>
+    <guid>https://helmigandi.com/posts/category/2025/your-post-title.html</guid>
 </item>
 ```
 
@@ -242,7 +242,7 @@ def hello():
 This blog is deployed on **Cloudflare Pages**:
 
 - Push to GitHub → Automatic deployment
-- URL: `https://your-blog-name.pages.dev`
+- URL: `https://helmigandi.com`
 
 ## 🔧 Adding New Category
 
@@ -331,7 +331,7 @@ To add a new category (e.g., "Python"):
 
 8. Your Blog is Live! 🎉
 
-    Your blog will be available at: `https://my-blog.pages.dev`
+    Your blog will be available at: `https://helmigandi.com`
 
 ## License
 

@@ -2,36 +2,45 @@
 <rss version="2.0">
 <channel>
     <title>Blog Helmigandi</title>
-    <link>http://yourdomain.com</link>
+    <link>https://helmigandi.com</link>
     <description>A blog about Helmi activities and technology</description>
     <language>id-ID</language>
     <lastBuildDate>Sat, 29 Nov 2025 17:45:00 +0700</lastBuildDate>
 
     <item>
         <title>Perbaikan Gagal Booting Arch Linux Setelah Update</title>
-        <link>https://your-domain.pages.dev/posts/linux/2025/perbaikan-arch-linux-setelah-update.html</link>
+        <link>https://helmigandi.com/posts/linux/2025/perbaikan-arch-linux-setelah-update.html</link>
         <description>Perbaikan sistem Arch Linux yang gagal booting setelah melakukan update (Error: "initrd: not found" / Boot Device Not Found).</description>
         <pubDate>Sat, 29 Nov 2025 17:45:00 +0700</pubDate>
         <category>Linux</category>
-        <guid>https://your-domain.pages.dev/posts/linux/2025/perbaikan-arch-linux-setelah-update.html</guid>
+        <guid>https://helmigandi.com/posts/linux/2025/perbaikan-arch-linux-setelah-update.html</guid>
     </item>
 
     <item>
         <title>Cara Membuat Bootable Flashdisk di Linux</title>
-        <link>https://your-domain.pages.dev/posts/category/2025/bootable-linux.html</link>
+        <link>https://helmigandi.com/posts/category/2025/bootable-linux.html</link>
         <description>Membuat bootable flashdisk atau flashdrive di Linux menggunakan dd.</description>
         <pubDate>Sat, 14 Nov 2025 17:45:00 +0700</pubDate>
         <category>Linux</category>
-        <guid>https://your-domain.pages.dev/posts/category/2025/bootable-linux.html</guid>
+        <guid>https://helmigandi.com/posts/category/2025/bootable-linux.html</guid>
     </item>
 
     <item>
         <title>yt-dlp Tools Powerful untuk Download Video</title>
-        <link>http://yourdomain.com/posts/linux/2025/yt-dlp-tools.html</link>
+        <link>https://helmigandi.com/posts/linux/2025/yt-dlp-tools.html</link>
         <description>Tutorial penggunaan yt-dlp</description>
         <pubDate>Tue, 4 Nov 2025 07:30:00 +0700</pubDate>
         <category>Linux</category>
-        <guid>http://yourdomain.com/posts/linux/2025/yt-dlp-tools.html</guid>
+        <guid>https://helmigandi.com/posts/linux/2025/yt-dlp-tools.html</guid>
+    </item>
+
+    <item>
+        <title>Contoh Penggunaan Worktree</title>
+        <link>https://helmigandi.com//posts/git/2025/contoh-penggunaan-worktree.html</link>
+        <description>Contoh Penggunaan Git Worktree</description>
+        <pubDate>Tue, 30 Dec 2025 17:45:00 +0700</pubDate>
+        <category>Git</category>
+        <guid>https://helmigandi.com//posts/git/2025/contoh-penggunaan-worktree.html</guid>
     </item>
 
 </channel>
