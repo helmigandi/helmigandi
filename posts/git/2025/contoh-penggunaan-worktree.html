@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Penggunaan Worktree - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- highlightjs CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="git">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">Contoh Penggunaan Worktree</h1>
+      <p class="post-meta">30 Desember 2025, 17:45</p>
+
+      <div class="post-body">
+  
+        <p>Berikut adalah contoh penggunaan Git Worktree.</p>
+
+        <h3>1. Contoh Membuat Beberapa Worktrees dengan tujuan yang berbeda-beda</h3>
+
+        <pre><code class="language-bash">
+          # Main project directory
+          cd /home/user/example-project
+          # Branch: feature/user-login
+
+          # Create worktree for hotfixes (based on main)
+          git worktree add ../example-project-hotfix main
+
+          # Create worktree for another feature (based on main)
+          git worktree add ../example-project-payment main
+
+          # Create worktree for testing (based on specific tag)
+          git worktree add ../example-project-test v1.1.0
+
+          # List all worktrees
+          git worktree list
+          # /home/user/example-project         [feature/user-login]
+          # /home/user/example-project-hotfix  [main]
+          # /home/user/example-project-payment [main]
+          # /home/user/example-project-test    [v1.1.0]
+        </code></pre>
+
+        <h2>2. Skenario 1: Membuat Feature dan Hotfix dengan Worktree</h2>
+
+        <pre><code class="language-bash">
+          # === INITIAL STATE ===
+          # You're in: /home/user/example-project
+          # Branch: feature/user-login (uncommitted changes)
+
+          pwd
+          # /home/user/example-project
+
+          git status
+          # On branch feature/user-login
+          # Changes not staged for commit:
+          #   modified: src/auth/login.js
+
+
+          # === STEP 1: CREATE WORKTREE FOR HOTFIX ===
+          # Create new worktree from main branch
+          git worktree add ../example-project-hotfix main
+
+          # Check worktrees
+          git worktree list
+          # /home/user/example-project        abc123 [feature/user-login]
+          # /home/user/example-project-hotfix def456 [main]
+
+
+          # === STEP 2: WORK ON HOTFIX (in new directory) ===
+          cd ../example-project-hotfix
+
+          # Now you're in a clean main branch!
+          pwd
+          # /home/user/example-project-hotfix
+
+          git status
+          # On branch main
+          # nothing to commit, working tree clean
+
+          # Create hotfix branch
+          git checkout -b hotfix/limit-register-username
+
+          # Make changes
+          # Edit files...
+
+          git add .
+          git commit -m "Add username limitation: max 24 chars, alphanumeric + underscore"
+
+          # Push hotfix
+          git push -u origin hotfix/limit-register-username
+
+          # Create PR on GitHub → Merge to main
+
+
+          # === STEP 3: OPTION A - Remove Worktree (Clean Up) ===
+          # If you're done with the hotfix directory
+
+          # Go back to main project
+          cd ../example-project
+
+          # Remove the hotfix worktree
+          git worktree remove ../example-project-hotfix
+
+          # Check worktrees
+          git worktree list
+          # /home/user/example-project abc123 [feature/user-login]
+
+          # Update your feature branch with the hotfix
+          git fetch origin
+          git merge origin/main
+
+          # Continue working on feature/user-login
+          # Your uncommitted changes are still there!
+
+
+          # === STEP 3: OPTION B - Keep Worktree (Continue Using) ===
+          # If you want to keep both directories for future use
+
+          # Just switch back to main project
+          cd ../example-project
+
+          # Both directories still exist and active
+          git worktree list
+          # /home/user/example-project        abc123 [feature/user-login]
+          # /home/user/example-project-hotfix def456 [hotfix/limit-register-username]
+
+          # Continue working on feature
+          # Edit src/auth/login.js...
+
+          # Later, if you need the hotfix directory again:
+          cd ../example-project-hotfix
+          git checkout main  # Switch to main
+          git pull           # Get latest changes
+          git checkout -b hotfix/another-fix  # Create new hotfix
+        </code></pre>
+
+        <h2>3. Skenario 2: Membuat Feature dan Permanent Hotfix dengan Worktree</h2>
+
+        <h3>Initial Setup (Do This Once)</h3>
+
+        <pre><code class="language-bash">
+          # === STEP 1: Setup your main project ===
+          cd ~/projects/example-project
+          git checkout main
+          git pull origin main
+
+          # === STEP 2: Create permanent hotfix worktree ===
+          git worktree add ../example-project-hotfix main
+
+          # === STEP 3: Verify setup ===
+          git worktree list
+          # /home/user/projects/example-project        abc123 [main]
+          # /home/user/projects/example-project-hotfix def456 [main]
+
+          # Your directory structure now:
+          # ~/projects/
+          # ├── example-project/        ← Main development
+          # └── example-project-hotfix/ ← For hotfixes only
+        </code></pre>
+
+        <h3>Minggu 1: Membuat Feature Baru</h3>
+
+        <pre><code class="language-bash">
+          # === DAY 1: Start feature development ===
+          cd ~/projects/example-project
+
+          # Create feature branch from main
+          git checkout main
+          git pull origin main
+          git checkout -b feature/user-login
+
+          # Start coding
+          # Edit files...
+          git add .
+          git commit -m "Add login form UI"
+
+          # Continue coding (might have uncommitted changes)
+          # Edit files...
+          git add .
+          git commit -m "Add login validation logic"
+
+          # End of day - uncommitted changes are fine!
+          # Just leave them there
+
+
+          # === DAY 3: URGENT HOTFIX NEEDED! ===
+          # Manager: "Fix username limitation NOW!"
+
+          # DON'T touch example-project directory!
+          # Your feature work stays untouched
+
+          # Switch to hotfix directory
+          cd ~/projects/example-project-hotfix
+
+          # Check current state
+          git status
+          # On branch main (clean, no uncommitted changes)
+
+          # Update main to latest
+          git pull origin main
+
+          # Create hotfix branch
+          git checkout -b hotfix/username-limitation
+
+          # Fix the bug
+          # Edit src/validation/username.js
+          # Add validation logic...
+
+          git add src/validation/username.js
+          git commit -m "Add username validation: max 24 chars, alphanumeric + underscore"
+
+          # Add tests
+          git add tests/validation/username.test.js
+          git commit -m "Add tests for username validation"
+
+          # Push hotfix
+          git push -u origin hotfix/username-limitation
+
+          # Create PR on GitHub: hotfix/username-limitation → main
+          # Wait for review and merge
+
+
+          # === AFTER HOTFIX IS MERGED ===
+          # Update main branch in hotfix directory
+          git checkout main
+          git pull origin main
+
+          # Update pom.xml for hotfix release
+          # Edit pom.xml: <version>1.1.0</version> → <version>1.1.1</version>
+          git add pom.xml
+          git commit -m "Bump version to 1.1.1"
+          git push origin main
+
+          # Create tag
+          git tag -a v1.1.1 -m "Hotfix v1.1.1 - Username validation
+
+          Bug Fixes:
+          - Add username limitation: max 24 characters
+          - Restrict username to alphanumeric and underscore only"
+
+          git push origin v1.1.1
+
+          # Create GitHub Release for v1.1.1
+
+          # Clean up hotfix branch
+          git branch -d hotfix/username-limitation
+          git push origin --delete hotfix/username-limitation
+
+
+          # === BACK TO FEATURE DEVELOPMENT ===
+          cd ~/projects/example-project
+
+          # Merge the hotfix into your feature branch
+          git fetch origin
+          git merge origin/main
+          # Resolve conflicts if any
+
+          # Continue feature development
+          # Your uncommitted changes from Day 3 are still there!
+          # Continue coding...
+
+
+          # === DAY 4-7: Continue feature ===
+          # Keep working on feature/user-login
+          # Commit regularly
+          git commit -m "Add session management"
+          git commit -m "Add logout functionality"
+          git commit -m "Add remember me feature"
+
+
+          # === DAY 8: Another hotfix during feature development ===
+          # No problem! Use the same hotfix worktree
+
+          cd ~/projects/example-project-hotfix
+
+          git checkout main
+          git pull origin main
+          git checkout -b hotfix/security-patch
+
+          # Fix security issue
+          git add .
+          git commit -m "Fix XSS vulnerability in search"
+          git push -u origin hotfix/security-patch
+
+          # PR → Merge → Tag v1.1.2
+
+          # Back to feature
+          cd ~/projects/example-project
+          git merge origin/main
+
+          # Continue feature work...
+        </code></pre>
+
+        <h3>Minggu 2: Feature Complete & Cleanup</h3>
+
+        <pre><code class="language-bash">
+          # === FEATURE IS COMPLETE ===
+          cd ~/projects/example-project
+
+          # Final commits
+          git add .
+          git commit -m "Add password reset functionality"
+          git commit -m "Add integration tests for authentication"
+
+          # Push feature
+          git push origin feature/user-login
+
+          # Create PR on GitHub: feature/user-login → main
+          # Code review → Approved → Merge
+
+
+          # === AFTER FEATURE IS MERGED TO MAIN ===
+          # Now you can remove the hotfix worktree
+
+          # Update main
+          git checkout main
+          git pull origin main
+
+          # Update version for feature release
+          # Edit pom.xml: <version>1.1.2</version> → <version>1.2.0</version>
+          git add pom.xml
+          git commit -m "Bump version to 1.2.0"
+          git push origin main
+
+          # Create tag
+          git tag -a v1.2.0 -m "Release v1.2.0 - User Authentication
+
+          Features:
+          - User login with email/password
+          - Session management
+          - Password reset functionality
+          - Remember me option
+
+          Includes hotfixes:
+          - v1.1.1: Username validation
+          - v1.1.2: Security patch"
+
+          git push origin v1.2.0
+
+          # Create GitHub Release for v1.2.0
+
+
+          # === CLEANUP: Remove hotfix worktree ===
+          # Since feature is merged, you can remove the hotfix worktree
+          git worktree remove ../example-project-hotfix
+
+          # Verify
+          git worktree list
+          # /home/user/projects/example-project abc123 [main]
+
+          # Clean up feature branch
+          git branch -d feature/user-login
+          git push origin --delete feature/user-login
+
+
+          # === NEXT FEATURE: Recreate hotfix worktree ===
+          # When you start next feature, create hotfix worktree again
+          git checkout -b feature/payment-system
+
+          # Create hotfix worktree again
+          git worktree add ../example-project-hotfix main
+
+          # Now you're ready for another week of development!
+        </code></pre>
+
+        <h3>Contoh Visualisasi</h3>
+
+        <pre><code class="language-bash">
+          Week 1-2: Feature Development
+          ═══════════════════════════════════════════════════════════
+
+          Main Directory (example-project):
+          main -> feature/user-login (Day 1-7)
+                ├── commit: Add login form UI
+                ├── commit: Add validation logic
+                ├── merge: hotfix v1.1.1           <──┐
+                ├── commit: Add session mgmt          │
+                ├── commit: Add logout                │
+                ├── merge: hotfix v1.1.2         <──┐ │
+                ├── commit: Add password reset      │ │
+                └── → MERGE TO MAIN                 │ │
+                                                    │ │
+          Hotfix Directory (example-project-hotfix):│ │
+          main → hotfix/username-limit (Day 3)      │ │
+                └── → MERGE TO MAIN (v1.1.1) ───────┘ │
+                                                      │
+          main → hotfix/security-patch (Day 8)        │
+                └── → MERGE TO MAIN (v1.1.2) ─────────┘
+
+          After feature merged: Remove hotfix worktree
+        </code></pre>
+
+        <h3>Struktur Direktori Pada Saat Development</h3>
+
+        <pre><code class="language-bash">
+          ~/projects/
+          ├── example-project/              # Main development directory
+          │   ├── .git/                     # Git repository (shared)
+          │   ├── src/
+          │   ├── tests/
+          │   ├── pom.xml
+          │   └── ...
+          │   # Current branch: feature/user-login
+          │   # Status: Uncommitted changes, in progress
+          │   # IDE/Server: Running here
+          │
+          └── example-project-hotfix/       # Hotfix directory (worktree)
+              ├── src/                      # Same files, different branch
+              ├── tests/
+              ├── pom.xml
+              └── ...
+              # Current branch: main (or hotfix/*)
+              # Status: Clean, only for hotfixes
+              # Can test hotfixes independently
+        </code></pre>
+
+        <h3>Referensi Perintah Penting</h3>
+
+        <pre><code class="language-bash">
+          # Create hotfix worktree (once per feature)
+          git worktree add ../example-project-hotfix main
+
+          # List worktrees
+          git worktree list
+
+          # Remove hotfix worktree (after feature merged)
+          git worktree remove ../example-project-hotfix
+
+          # Update hotfix worktree to latest main
+          cd ~/projects/example-project-hotfix
+          git checkout main
+          git pull origin main
+
+          # Merge hotfix into feature
+          cd ~/projects/example-project
+          git fetch origin
+          git merge origin/main
+
+          # Clean up old hotfix branches in worktree
+          cd ~/projects/example-project-hotfix
+          git branch -d hotfix/old-branch-name
+        </code></pre>
+
+        <h3>Ringkasan Saat Pembuatan Worktree</h3>
+
+        <p>Saat membuat feature baru:</p>
+
+        <ul>
+          <li><code>cd ~/projects/example-project</code></li>
+          <li><code>git checkout main && git pull</code></li>
+          <li><code>git checkout -b feature/new-feature</code></li>
+          <li><code>git worktree add ../example-project-hotfix main</code></li>
+          <li><code>git worktree list</code></li>
+        </ul>
+
+        <p>Ketika butuh melakukan Hotfix:</p>
+
+        <ul>
+          <li><code>cd ~/projects/example-project-hotfix</code></li>
+          <li><code>git checkout main && git pull</code></li>
+          <li><code>git checkout -b hotfix/issue-name</code></li>
+          <li>Fix, commit, push, create PR</li>
+          <li>After merge: tag and release</li>
+          <li><code></code>cd ~/projects/example-project</li>
+          <li><code>git merge origin/main</code></li>
+        </ul>
+
+        <p>Setelah melakukan merge pada feature baru:</p>
+
+        <ul>
+          <li><code></code>Update main and create release tag</li>
+          <li><code>git worktree remove ../example-project-hotfix</code></li>
+          <li><code></code>Delete feature branch</li>
+          <li><code></code>Ready for next feature!</li>
+        </ul>
+
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/git.html">← Back to Git Posts</a>
+      </div>
+
+      <!-- Utterances Comments -->
+      <div class="comments-section">
+        <script
+          src="https://utteranc.es/client.js"
+          repo="helmigandi/helmigandi"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Highlight.js -->
+    <script src="../../../js/highlight-loader.js"></script>
+  </body>
+</html>

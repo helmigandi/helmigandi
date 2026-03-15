@@ -4,6 +4,7 @@ function getAllPosts() {
     ...(typeof linuxPosts !== "undefined" ? linuxPosts : []),
     ...(typeof postgresqlPosts !== "undefined" ? postgresqlPosts : []),
     ...(typeof javaPosts !== "undefined" ? javaPosts : []),
+    ...(typeof gitPosts !== "undefined" ? gitPosts : []),
   ];
 }
 
@@ -46,6 +47,8 @@ function displayPosts(category = "all", page = 1) {
     filteredPosts = postgresqlPosts;
   } else if (category === "java" && typeof javaPosts !== "undefined") {
     filteredPosts = javaPosts;
+  } else if (category === "git" && typeof gitPosts !== "undefined") {
+    filteredPosts = gitPosts;
   }
 
   if (filteredPosts.length === 0) {
