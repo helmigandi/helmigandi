@@ -3,8 +3,9 @@ body {
   margin: 20px auto;
   max-width: 800px;
   padding: 0 20px;
-  background-color: #F5F5F5;
-  color: #2E2E2E;
+  background-color: #FAFAFA;
+  color: #333333;
+  line-height: 1.6;
 }
 
 h1 {
@@ -35,7 +36,7 @@ hr {
   color: #666;
   display: block;
   font-size: 14px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .pagination {
