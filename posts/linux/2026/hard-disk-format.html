@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Format Hard Disk di Linux - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- highlightjs CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="linux">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">Format Hard Disk di Linux</h1>
+      <p class="post-meta">25 Maret 2026, 07:38</p>
+
+      <div class="post-body">
+        <p>
+          Berikut adalah cara untuk format hard disk di Sistem Operasi Linux dengan menggunakan sistem file exFAT.
+        </p>
+
+        <p>
+          exFAT adalah sistem file (file system) ang digunakan untuk mengatur data pada media penyimpanan agar bisa diakses di Windows, Linux, dan macOS.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Format</th>
+                <th>Windows</th>
+                <th>macOS</th>
+                <th>Linux</th>
+                <th>Max File Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>NTFS</td>
+                <td>Didukung</td>
+                <td>Hanya Baca</td>
+                <td>Butuh Driver</td>
+                <td>16 TB</td>
+              </tr>
+              <tr>
+                <td>exFAT</td>
+                <td>Didukung</td>
+                <td>Didukung</td>
+                <td>Didukung</td>
+                <td>16 EB</td>
+              </tr>
+              <tr>
+                <td>exFAT</td>
+                <td>Didukung</td>
+                <td>Didukung</td>
+                <td>Didukung</td>
+                <td>4 GB</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>I. Cara Memformat</h2>
+
+        <pre><code class="language-bash">
+          # 1. Install exFAT tools (if needed)
+          sudo apt install exfatprogs   # Ubuntu/Debian
+          # sudo dnf install exfatprogs # Fedora
+
+          # 2. Unmount the disk
+          sudo umount /dev/sda1
+
+          # 3. Create a new GPT partition table (better than MBR/dos)
+          sudo parted /dev/sda --script mklabel gpt
+
+          # 4. Create a single partition using the full disk
+          sudo parted /dev/sda --script mkpart primary 0% 100%
+
+          # 5. Format to exFAT
+          sudo mkfs.exfat -n "MyDrive" /dev/sda1
+
+          # 6. Verify
+          sudo fsck.exfat /dev/sda1
+
+          # 7. Fix the partition type to official Microsoft Basic Data GUID
+          sudo gdisk /dev/sda
+          
+          # 8.  Inside gdisk:
+          # 9.  t        → change partition type
+          # 10. 1        → select partition 1
+          # 11. 0700     → Microsoft Basic Data (correct for exFAT/NTFS)
+          # 12. w        → write and exit
+          # 13. y        → confirm
+        </code></pre>
+
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/linux.html">← Back to Linux Posts</a>
+      </div>
+
+      <!-- Utterances Comments -->
+      <div class="comments-section">
+        <script
+          src="https://utteranc.es/client.js"
+          repo="helmigandi/helmigandi"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Highlight.js -->
+    <script src="../../../js/highlight-loader.js"></script>
+  </body>
+</html>

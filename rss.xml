@@ -36,11 +36,20 @@
 
     <item>
         <title>Contoh Penggunaan Worktree</title>
-        <link>https://helmigandi.com//posts/git/2025/contoh-penggunaan-worktree.html</link>
-        <description>Contoh Penggunaan Git Worktree</description>
+        <link>https://helmigandi.com/posts/git/2025/contoh-penggunaan-worktree.html</link>
+        <description>Contoh Penggunaan Git Worktree.</description>
         <pubDate>Tue, 30 Dec 2025 17:45:00 +0700</pubDate>
         <category>Git</category>
-        <guid>https://helmigandi.com//posts/git/2025/contoh-penggunaan-worktree.html</guid>
+        <guid>https://helmigandi.com/posts/git/2025/contoh-penggunaan-worktree.html</guid>
+    </item>
+
+    <item>
+        <title>Format Hard Disk di Linux</title>
+        <link>https://helmigandi.com/posts/linux/2026/hard-disk-format.html</link>
+        <description>Format Hard Disk di Linux dengan sistem file exFAT.</description>
+        <pubDate>Wed, 25 Mar 2026 07:38:00 +0700</pubDate>
+        <category>Linux</category>
+        <guid>https://helmigandi.com/posts/linux/2026/hard-disk-format.html</guid>
     </item>
 
 </channel>

@@ -17,5 +17,11 @@ const linuxPosts = [
     category: "linux",
     url: "../posts/linux/2025/yt-dlp-tools.html",
   },
+  {
+    date: "25 Maret 2026",
+    title: "Format Hard Disk di Linux",
+    category: "linux",
+    url: "../posts/linux/2026/hard-disk-format.html",
+  },
   // Add more Linux posts here...
 ];
