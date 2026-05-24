@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audacity Export Settings for YouTube Music Videos - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- highlightjs CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="linux">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">Konversi Youtube Video Musik dengan Audacity</h1>
+      <p class="post-meta">24 Mei 2026, 08:50</p>
+
+      <div class="post-body">
+        <p>Berikut adalah cara untuk mengkonversi video musik untuk YouTube menggunakan Audacity.</p>
+
+        <h2>Langkah-langkah</h2>
+
+        <ol>
+          <li>Download video/audio menggunakan <strong>yt-dlp</strong>.</li>
+          <li>Buka Audacity dan impor dengan cara drag and drop file audio/video yang telah di-download.</li>
+          <li>Potong bagian yang tidak diinginkan.</li>
+          <li>Set Normalize ke <strong>-1.0 dB</strong> (default).</li>
+          <li>Export file audio.</li>
+        </ol>
+
+        <h2>Pengaturan Normalize</h2>
+
+        <ol>
+          <li>Select file atau blok dengan menggunakan <strong>Ctrl</strong> dan <strong>a</strong>.</li>
+          <li>
+            Pilih menu <strong>Effect</strong> dan kemudian pilih <strong>Volume and Compression</strong> terakhir klik
+            <strong>Normalize</strong>.
+          </li>
+          <li>
+            Pastikan nilai normalize diatur ke <strong>-1.0 dB</strong>, centang <strong>Remove DC offset</strong> dan
+            jangan mencentang <strong>normalize stereo channels independently</strong>.
+          </li>
+        </ol>
+
+        <h2>Pengaturan Konversi atau Export Audio</h2>
+
+        <ol>
+          <li>Pilih format <strong>MP3</strong></li>
+          <li>
+            Pada bagian <strong>Audio Options</strong> dan pastikan pengaturan seperti berikut:
+            <ul>
+              <li><strong>Channels:</strong> Stereo</li>
+              <li><strong>Sample Rate:</strong> 48000 Hz</li>
+              <li><strong>Bit Rate Mode:</strong> Preset</li>
+              <li><strong>Quality:</strong> Extreme</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/linux.html">← Back to Linux Posts</a>
+      </div>
+
+      <!-- Utterances Comments -->
+      <div class="comments-section">
+        <script
+          src="https://utteranc.es/client.js"
+          repo="helmigandi/helmigandi"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Highlight.js -->
+    <script src="../../../js/highlight-loader.js"></script>
+  </body>
+</html>

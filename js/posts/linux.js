@@ -1,5 +1,11 @@
 const linuxPosts = [
   {
+    date: "24 Mei 2026",
+    title: "Konversi Youtube Video Musik dengan Audacity",
+    category: "linux",
+    url: "../posts/linux/2026/audacity-export-settings.html",
+  },
+  {
     date: "29 November 2025",
     title: "Perbaikan Gagal Booting Arch Linux Setelah Update",
     category: "linux",

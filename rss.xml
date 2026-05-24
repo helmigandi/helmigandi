@@ -3,9 +3,18 @@
 <channel>
     <title>Blog Helmigandi</title>
     <link>https://helmigandi.com</link>
-    <description>A blog about Helmi activities and technology</description>
+    <description>Sebuah catatan tentang teknologi dan aktivitas dari kegiatan sehari-hari Helmi</description>
     <language>id-ID</language>
-    <lastBuildDate>Sat, 29 Nov 2025 17:45:00 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 08:50:00 +0700</lastBuildDate>
+
+    <item>
+        <title>Konversi Youtube Video Musik dengan Audacity</title>
+        <link>https://helmigandi.com/posts/linux/2026/audacity-export-settings.html</link>
+        <description>Cara untuk mengkonversi video musik untuk YouTube menggunakan Audacity.</description>
+        <pubDate>Sun, 24 May 2026 08:50:00 +0700</pubDate>
+        <category>Linux</category>
+        <guid>https://helmigandi.com/posts/linux/2026/audacity-export-settings.html</guid>
+    </item>
 
     <item>
         <title>Perbaikan Gagal Booting Arch Linux Setelah Update</title>
