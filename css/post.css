@@ -36,26 +36,26 @@
 
 .post-body h3 {
   font-size: 20px;
-  margin-top: 14px;
+  margin-top: 10px;
   margin-bottom: 0px;
 }
 
 .post-body h4 {
   font-size: 18px;
-  margin-top: 14px;
+  margin-top: 8px;
   margin-bottom: 0px;
 }
 
 .post-body h5 {
   font-size: 16px;
-  margin-top: 14px;
+  margin-top: 6px;
   margin-bottom: 0px;
   font-weight: bold;
 }
 
 .post-body h6 {
   font-size: 16px;
-  margin-top: 12px;
+  margin-top: 6px;
   margin-bottom: 0px;
   font-weight: normal;
   font-style: italic;
