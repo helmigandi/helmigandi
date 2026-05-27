@@ -4,7 +4,7 @@ const navbarHTML = `
 <nav>
     <a href="/" id="nav-home">Home</a>
     <a href="/pages/linux.html" id="nav-linux">Linux</a>
-    <a href="/pages/java.html" id="nav-java">Java</a>
+    <a href="/pages/programming.html" id="nav-programming">Programming</a>
     <a href="/pages/postgresql.html" id="nav-postgresql">PostgreSQL</a>
     <a href="/pages/git.html" id="nav-git">Git</a>
 </nav>

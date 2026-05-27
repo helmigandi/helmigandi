@@ -3,7 +3,7 @@ function getAllPosts() {
   return [
     ...(typeof linuxPosts !== "undefined" ? linuxPosts : []),
     ...(typeof postgresqlPosts !== "undefined" ? postgresqlPosts : []),
-    ...(typeof javaPosts !== "undefined" ? javaPosts : []),
+    ...(typeof programmingPosts !== "undefined" ? programmingPosts : []),
     ...(typeof gitPosts !== "undefined" ? gitPosts : []),
   ];
 }
@@ -45,8 +45,8 @@ function displayPosts(category = "all", page = 1) {
     filteredPosts = linuxPosts;
   } else if (category === "postgresql" && typeof postgresqlPosts !== "undefined") {
     filteredPosts = postgresqlPosts;
-  } else if (category === "java" && typeof javaPosts !== "undefined") {
-    filteredPosts = javaPosts;
+  } else if (category === "programming" && typeof programmingPosts !== "undefined") {
+    filteredPosts = programmingPosts;
   } else if (category === "git" && typeof gitPosts !== "undefined") {
     filteredPosts = gitPosts;
   }

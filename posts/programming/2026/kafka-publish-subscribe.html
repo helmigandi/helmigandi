@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kafka Publish Subscribe - Helmigandi</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/post.css" />
+    <!-- highlightjs CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png" />
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog Helmigandi RSS Feed" href="../../../rss.xml" />
+  </head>
+  <body data-page="programming">
+    <div id="navbar"></div>
+
+    <article class="post-content">
+      <h1 class="post-title">Kafka Publish Subscribe</h1>
+      <p class="post-meta">28 Mei 2026, 19:21</p>
+
+      <div class="post-body">
+        <h2>Apa itu Publish Subscribe?</h2>
+
+        <p>Publish/Subscribe (Pub/Sub) adalah pola komunikasi di mana:</p>
+        <ul>
+          <li>Pengirim data disebut <strong>Producer</strong>.</li>
+          <li>Penerima data disebut <strong>Consumer</strong>.</li>
+          <li>Di tengahnya ada perantara bernama <strong>Kafka</strong> (contohnya Kafka)</li>
+        </ul>
+
+        <p>Pada sistem ini:</p>
+        <ul>
+          <li>Producer tidak mengirim langsung ke Consumer.</li>
+          <li>Producer hanya mengirim pesan ke Broker.</li>
+          <li>Consumer mengambil pesan dari Broker.</li>
+        </ul>
+
+        <p>Karena itu Producer tidak perlu tahu::</p>
+        <ul>
+          <li>Siapa penerimanya.</li>
+          <li>Ada berapa banyak penerima.</li>
+          <li>Bagaimana data diproses.</li>
+        </ul>
+
+        <h2>Diagram Dasar Kafka Pub/Sub</h2>
+
+        <pre><code class="language-bash">
+          +------------------+
+          |    Producer      |
+          | (Pengirim Data)  |
+          +--------+---------+
+                  |
+                  | Publish Message/Event
+                  v
+          +-----------------------------+
+          |        Kafka Broker         |
+          | --------------------------- |
+          | Topic: ORDER_CREATED        |
+          |                             |
+          | [Message 1]                 |
+          | [Message 2]                 |
+          | [Message 3]                 |
+          +-------------+---------------+
+                        |
+                +-------+--------+----------------+
+                |                |                |
+                v                v                v
+          +-------------+  +-------------+  +-------------+
+          | Consumer A  |  | Consumer B  |  | Consumer C  |
+          | Email App   |  | Gudang App  |  | Analytics   |
+          +-------------+  +-------------+  +-------------+
+        </code></pre>
+
+        <h2>Analogi Kehidupan Sehari-hari</h2>
+        <p>Bayangkan Anda memiliki papan pengumuman di kantor:</p>
+        <ul>
+          <li>Anda (Producer) menempelkan pengumuman di papan (Kafka Broker).</li>
+          <li>Rekan kerja Anda (Consumer) datang untuk membaca pengumuman kapan saja mereka mau.</li>
+          <li>Anda tidak perlu tahu siapa yang membaca atau berapa yang mereka lakukan dengan informasi itu.</li>
+        </ul>
+
+        <h2>Keuntungan Menggunakan Kafka / Messaging</h2>
+
+        <h3>1. Loose Coupling</h3>
+        <p>Producer dan Consumer tidak bergantung satu sama lain. Mereka hanya berinteraksi dengan Broker.</p>
+        <ul>
+          <li>Producer dapat berubah tanpa mempengaruhi Consumer.</li>
+          <li>
+            Consumer dapat berubah tanpa mempengaruhi Producer. Misalnya Misalnya awalnya hanya ada Service Email, Lalu
+            ditambah Service WhatsApp, Service Analytics, dan Service Notifikasi.
+          </li>
+        </ul>
+
+        <h3>2. Lebih Scalable</h3>
+        <p>
+          Consumer bisa ditambah saat traffic meningkat. Misal yang awalnya 1 consumer, bisa ditambah menjadi 5 consumer
+          untuk membagi beban kerja.
+        </p>
+
+        <h3>3. Asynchronous Processing</h3>
+        <p>
+          Producer tidak perlu menunggu Consumer selesai memproses pesan. Mereka bisa terus mengirim pesan baru tanpa
+          hambatan.
+        </p>
+
+        <h2>Kekurangan Menggunakan Messaging</h2>
+
+        <h3>1. Asynchronous Processing</h3>
+        <p>Kafka sangat cepat, tetapi tetap ada kemungkinan delay. Contoh alurnya:</p>
+        <ul>
+          <li>Producer mengirim pesan ke Kafka.</li>
+          <li>Kafka menyimpan pesan di dalam topic.</li>
+          <li>Consumer mengambil pesan dari Kafka.</li>
+          <li>Consumer memproses pesan.</li>
+        </ul>
+        <p>Oleh karena itu messaging biasanya tidak dipakai untuk proses yang harus instant.</p>
+
+        <h3>2. Debugging Lebih Sulit</h3>
+        <p>Karena banyak service saling berkomunikasi melalui event, alur sistem lebih sulit ditelusuri.</p>
+
+        <h3>3. Duplicate Message</h3>
+        <p>
+          Dalam beberapa kasus, pesan bisa saja dikirim lebih dari sekali. Ini bisa terjadi karena berbagai alasan
+          seperti network issues atau consumer failure. Oleh karena itu, aplikasi consumer dapat menangani pesan
+          duplikat dengan baik.
+        </p>
+
+        <h3>4. Producer Tidak Tahu Hasil Akhir</h3>
+        <p>
+          Producer mengirim pesan ke Kafka, tetapi tidak tahu apakah pesan tersebut berhasil diproses oleh Consumer atau
+          tidak. Oleh karena itu consumer biasanya membutuhkan:
+        </p>
+        <ul>
+          <li>Monitoring untuk memastikan pesan diproses dengan benar.</li>
+          <li>Retry mechanism untuk menangani kegagalan pemrosesan.</li>
+          <li>Dead letter queue untuk menyimpan pesan yang gagal diproses setelah beberapa kali percobaan.</li>
+          <li>Logging untuk mencatat aktivitas dan error yang terjadi.</li>
+        </ul>
+
+        <h2>Pola Arsitektur yang Umum Dipakai</h2>
+        <pre><code class="language-bash">
+                +----------------+
+                |      User      |
+                +--------+-------+
+                         |
+                         v
+                +----------------+
+                |  Order Service |
+                +--------+-------+
+                         |
+                         | Sync Call
+                         v
+                +----------------+
+                | Payment Service|
+                +--------+-------+
+                         |
+                  Payment Success
+                         |
+                         v
+                  Publish Event
+                    ORDER_PAID
+                         |
+                         v
+                    Kafka Broker
+                         |
+          +--------------+--------------+
+          |              |              |
+          v              v              v
+      Email App      Warehouse      Analytics
+        </code></pre>
+
+        <h2>Istilah Penting di Kafka</h2>
+        <ul>
+          <li><strong>Producer:</strong> Aplikasi yang mengirim pesan ke Kafka.</li>
+          <li><strong>Consumer:</strong> Aplikasi yang mengambil pesan dari Kafka.</li>
+          <li><strong>Broker:</strong> Server yang menjalankan Kafka dan menyimpan pesan.</li>
+          <li><strong>Topic:</strong> Tempat menyimpan pesan. Mirip folder untuk pesan.</li>
+          <li><strong>Partition:</strong> Sub-bagian dari topic untuk meningkatkan performa dan skalabilitas.</li>
+          <li><strong>Offset:</strong> Penanda posisi terakhir pesan yang dibaca oleh consumer.</li>
+          <li>
+            <strong>Consumer Group:</strong> Sekelompok consumer yang bekerja bersama untuk memproses pesan dari topic
+            yang sama.
+          </li>
+        </ul>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../../pages/programming.html">← Back to Programming Posts</a>
+      </div>
+
+      <!-- Utterances Comments -->
+      <div class="comments-section">
+        <script
+          src="https://utteranc.es/client.js"
+          repo="helmigandi/helmigandi"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    </article>
+
+    <script src="../../../js/navbar-posts.js"></script>
+    <!-- Load Highlight.js -->
+    <script src="../../../js/highlight-loader.js"></script>
+  </body>
+</html>

@@ -5,7 +5,16 @@
     <link>https://helmigandi.com</link>
     <description>Sebuah catatan tentang teknologi dan aktivitas dari kegiatan sehari-hari Helmi</description>
     <language>id-ID</language>
-    <lastBuildDate>Sun, 24 May 2026 08:50:00 +0700</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 19:21:00 +0700</lastBuildDate>
+
+    <item>
+        <title>Kafka Publish Subscribe</title>
+        <link>https://helmigandi.com/posts/programming/2026/kafka-publish-subscribe.html</link>
+        <description>Penjelasan tentang pola publish-subscribe di Kafka.</description>
+        <pubDate>Thu, 28 May 2026 19:21:00 +0700</pubDate>
+        <category>Programming</category>
+        <guid>https://helmigandi.com/posts/programming/2026/kafka-publish-subscribe.html</guid>
+    </item>
 
     <item>
         <title>Konversi Youtube Video Musik dengan Audacity</title>

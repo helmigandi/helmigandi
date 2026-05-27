@@ -4,7 +4,7 @@ const navbarHTML = `
 <nav>
     <a href="index.html" id="nav-home">Home</a>
     <a href="pages/linux.html" id="nav-linux">Linux</a>
-    <a href="pages/java.html" id="nav-java">Java</a>
+    <a href="pages/programming.html" id="nav-programming">Programming</a>
     <a href="pages/postgresql.html" id="nav-postgresql">PostgreSQL</a>
     <a href="pages/git.html" id="nav-git">Git</a>
 </nav>
@@ -12,11 +12,11 @@ const navbarHTML = `
 `;
 
 // Insert navbar
-document.getElementById('navbar').innerHTML = navbarHTML;
+document.getElementById("navbar").innerHTML = navbarHTML;
 
 // Set active page
-const currentPage = document.body.getAttribute('data-page');
-const activeLink = document.getElementById('nav-' + currentPage);
+const currentPage = document.body.getAttribute("data-page");
+const activeLink = document.getElementById("nav-" + currentPage);
 if (activeLink) {
-    activeLink.classList.add('active');
+  activeLink.classList.add("active");
 }
