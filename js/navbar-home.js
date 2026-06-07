@@ -7,6 +7,7 @@ const navbarHTML = `
     <a href="pages/programming.html" id="nav-programming">Programming</a>
     <a href="pages/postgresql.html" id="nav-postgresql">PostgreSQL</a>
     <a href="pages/git.html" id="nav-git">Git</a>
+    <a href="pages/personal.html" id="nav-personal">Personal</a>
 </nav>
 <hr>
 `;

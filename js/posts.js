@@ -5,6 +5,7 @@ function getAllPosts() {
     ...(typeof postgresqlPosts !== "undefined" ? postgresqlPosts : []),
     ...(typeof programmingPosts !== "undefined" ? programmingPosts : []),
     ...(typeof gitPosts !== "undefined" ? gitPosts : []),
+    ...(typeof personalPosts !== "undefined" ? personalPosts : []),
   ];
 }
 
@@ -49,6 +50,8 @@ function displayPosts(category = "all", page = 1) {
     filteredPosts = programmingPosts;
   } else if (category === "git" && typeof gitPosts !== "undefined") {
     filteredPosts = gitPosts;
+  } else if (category === "personal" && typeof personalPosts !== "undefined") {
+    filteredPosts = personalPosts;
   }
 
   if (filteredPosts.length === 0) {
