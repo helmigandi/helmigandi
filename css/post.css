@@ -10,12 +10,12 @@
 }
 
 .post-meta {
-  color: #666;
+  color: #8b949e;
   font-size: 14px;
   margin-bottom: 15px;
   margin-top: 6px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #30363d;
 }
 
 .post-body {
@@ -64,7 +64,7 @@
 .post-footer {
   margin-top: 20px;
   padding-top: 12px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #30363d;
 }
 
 .post-footer a:hover {
@@ -98,19 +98,19 @@
 
 .post-body table th,
 .post-body table td {
-  border: 1px solid #ddd;
+  border: 1px solid #30363d;
   padding: 8px;
   text-align: left;
 }
 
 .post-body table th {
-  background-color: #f5f5f5;
+  background-color: #161b22;
   font-weight: bold;
 }
 
 /* Code blocks */
 .post-body code {
-  background-color: #f5f5f5;
+  background-color: #161b22;
   padding: 2px 5px;
   border-radius: 3px;
   font-family: monospace;
@@ -118,12 +118,13 @@
 }
 
 .post-body pre {
-  background-color: #f5f5f5;
+  background-color: #161b22;
   padding: 15px;
   border-radius: 5px;
   overflow-x: auto;
   margin-bottom: 4px;
   margin-top: 6px;
+  border: 1px solid #30363d;
 }
 
 .post-body pre code {
@@ -140,8 +141,8 @@
 }
 
 .post-body .line-numbers {
-  background-color: #e8e8e8;
-  color: #999;
+  background-color: #0d1117;
+  color: #6e7681;
   padding: 15px 10px;
   text-align: right;
   user-select: none;
@@ -149,7 +150,7 @@
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #30363d;
 }
 
 .post-body pre.code-with-lines code {
@@ -159,11 +160,11 @@
 
 /* Blockquotes */
 .post-body blockquote {
-  border-left: 3px solid #ddd;
+  border-left: 3px solid #30363d;
   padding-left: 15px;
   margin-left: 0;
   margin-bottom: 12px;
-  color: #666;
+  color: #8b949e;
   font-style: italic;
 }
 
@@ -187,7 +188,7 @@
 .post-body figcaption {
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #8b949e;
   font-style: italic;
   margin-top: 8px;
 }
@@ -195,7 +196,7 @@
 /* Horizontal rule */
 .post-body hr {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #30363d;
   margin: 20px 0;
 }
 
